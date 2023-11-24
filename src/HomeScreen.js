@@ -1,3 +1,4 @@
+// HomeScreen.js
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -37,17 +38,22 @@ const HomeScreen = () => {
     setSelectedOption(item.label);
     setDropdownVisible(false);
 
-    // Navigate to the respective screen based on the selected option
+    // Perform navigation based on the selected option
     switch (item.value) {
       case 'option1':
-        // Navigate to the "ToDoList" screen
         navigation.navigate('ToDoList');
         break;
       case 'option2':
-        // Navigate to the "Reminders" screen
         navigation.navigate('Reminders');
         break;
-      // Add cases for other options as needed
+      case 'option6':
+        // Sign out logic
+        // For simplicity, you can navigate back to the login screen
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Login' }],
+        });
+        break;
       default:
         break;
     }
@@ -82,12 +88,10 @@ const HomeScreen = () => {
     <TouchableWithoutFeedback onPress={closeDropdown}>
       <View style={styles.container}>
         <View style={styles.header}>
-          {/* Use TouchableOpacity to make the icon clickable */}
           <TouchableOpacity onPress={handleIconPress}>
             <Icon name="caret-down" size={30} color="#000" style={styles.icon} />
           </TouchableOpacity>
           <Text style={styles.userName}>John Doe</Text>
-          {/* Add any additional information here */}
         </View>
 
         {isDropdownVisible && renderDropdown()}
@@ -112,9 +116,9 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center', // Align items vertically
+    alignItems: 'center',
     marginBottom: 20,
-    marginTop: 30, // Adjust this value to bring the header down
+    marginTop: 30,
   },
   icon: {
     marginRight: 10,
@@ -123,15 +127,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   dropdown: {
     position: 'absolute',
-    top: 60, // Adjust this value as needed
-    left: 10, // Adjust this value to position it on the left side
+    top: 60,
+    left: 10,
     backgroundColor: 'white',
     borderRadius: 5,
     elevation: 3,
@@ -143,7 +142,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
   },
   grid: {
-    marginTop: 10, // Adjust this value for spacing between dropdown and grid
+    marginTop: 10,
   },
   gridItem: {
     flex: 1,

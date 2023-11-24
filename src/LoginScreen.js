@@ -1,28 +1,29 @@
 // LoginScreen.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigation = useNavigation();
 
   const handleLogin = () => {
     // Perform login logic here
-    // For simplicity, let's check if both username and password are non-empty
     if (username && password) {
-      // Successful login, navigate to the next screen
-      // Replace 'Home' with the name of your next screen
-      navigation.navigate('Home');
+      // Successful login, navigate to the Home screen and reset the navigation state
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      });
     } else {
-      // Display an error message if login fails
       setError('Invalid username or password');
     }
   };
 
-  const navigateToRegister = () => {
-    // Navigate to the 'Register' screen
-    // Replace 'Register' with the name of your registration screen
+  const handleNavigateToRegistration = () => {
+    // Navigate to the registration screen
     navigation.navigate('Register');
   };
 
@@ -44,9 +45,11 @@ const LoginScreen = ({ navigation }) => {
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <Button title="Login" onPress={handleLogin} />
-      <Text style={styles.newUserLink} onPress={navigateToRegister}>
-        New User?
-      </Text>
+
+      {/* New User? button */}
+      <TouchableOpacity onPress={handleNavigateToRegistration}>
+        <Text style={styles.newUserButton}>New User? Register Here</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -74,10 +77,9 @@ const styles = StyleSheet.create({
     color: 'red',
     marginBottom: 10,
   },
-  newUserLink: {
-    marginTop: 20,
+  newUserButton: {
     color: 'blue',
-    textDecorationLine: 'underline',
+    marginTop: 10,
   },
 });
 

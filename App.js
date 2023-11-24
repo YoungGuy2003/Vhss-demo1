@@ -7,6 +7,7 @@ import ThoughtScreen from './src/ThoughtScreen';
 import LoginScreen from './src/LoginScreen';
 import RegisterScreen from './src/RegisterScreen';
 import HomeScreen from './src/HomeScreen';
+import ReminderPage from './src/ReminderPage';
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,12 @@ const App = () => {
           component={HomeScreen}
           // You might want to customize the header for the login screen
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Reminders"
+          component={ReminderPage}
+          // You might want to customize the header for the login screen
+          options={{ title: 'Reminders' }}
         />
         {/* Add other screens here */}
       </Stack.Navigator>

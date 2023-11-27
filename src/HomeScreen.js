@@ -19,15 +19,15 @@ const HomeScreen = () => {
   ];
 
   const gridItems = [
-    { label: 'Option 1', icon: 'bell' },
-    { label: 'Option 2', icon: 'calendar' },
-    { label: 'Option 3', icon: 'users' },
-    { label: 'Option 4', icon: 'info-circle' },
-    { label: 'Option 5', icon: 'phone' },
-    { label: 'Option 6', icon: 'sign-out' },
-    { label: 'Option 7', icon: 'tasks' },
-    { label: 'Option 8', icon: 'list-ul' },
-    { label: 'Option 9', icon: 'comment' },
+    { label: 'Home', icon: 'home', value: 'HomeServ' }, // Changed icon to 'home'
+    { label: 'Knowledge', icon: 'book', value: 'Knowledge' }, // Changed icon to 'book'
+    { label: 'Professional', icon: 'briefcase', value: 'Professional' }, // Changed icon to 'briefcase'
+    { label: 'Aware', icon: 'info', value: 'Aware' }, // Changed icon to 'info'
+    { label: 'Counselling', icon: 'phone-square', value: 'Counselling' }, // Changed icon to 'phone-square'
+    { label: 'Vehicle', icon: 'car', value: 'Vehicle' }, // Changed icon to 'car'
+    { label: 'Agri/Vet', icon: 'leaf', value: 'Agric' }, // Changed icon to 'leaf'
+    { label: 'Shopping', icon: 'shopping-cart', value: 'Shopping' }, // Changed icon to 'shopping-cart'
+    { label: 'Others', icon: 'commenting', value: 'Others' }, // Changed icon to 'commenting'
   ];
 
   const handleIconPress = () => {
@@ -55,6 +55,7 @@ const HomeScreen = () => {
         });
         break;
       default:
+        navigation.navigate(item.value);
         break;
     }
   };

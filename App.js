@@ -8,6 +8,7 @@ import LoginScreen from './src/LoginScreen';
 import RegisterScreen from './src/RegisterScreen';
 import HomeScreen from './src/HomeScreen';
 import ReminderPage from './src/ReminderPage';
+import HomeServ from './src/HomeServ';
 
 const Stack = createStackNavigator();
 
@@ -48,6 +49,12 @@ const App = () => {
           component={ReminderPage}
           // You might want to customize the header for the login screen
           options={{ title: 'Reminders' }}
+        />
+        <Stack.Screen
+          name="HomeServ"
+          component={HomeServ}
+          // You might want to customize the header for the login screen
+          options={{ title: 'Home Services' }}
         />
         {/* Add other screens here */}
       </Stack.Navigator>
